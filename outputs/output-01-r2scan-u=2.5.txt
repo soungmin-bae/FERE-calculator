@@ -1,0 +1,58 @@
+
+FERE Correction values for each element:
+Ag: FERE Correction: -0.1638 eV
+Al: FERE Correction: 0.2631 eV
+As: FERE Correction: -0.0640 eV
+Au: FERE Correction: -0.3983 eV
+Ba: FERE Correction: 0.1036 eV
+Be: FERE Correction: 0.0845 eV
+Bi: FERE Correction: 0.0485 eV
+Ca: FERE Correction: 0.2076 eV
+Cd: FERE Correction: 0.0458 eV
+Cl: FERE Correction: 0.0002 eV
+Co: FERE Correction: -1.5444 eV
+Cr: FERE Correction: -1.8461 eV
+Cu: FERE Correction: 0.0263 eV
+F: FERE Correction: -0.0980 eV
+Fe: FERE Correction: -2.8223 eV
+Ga: FERE Correction: 0.2992 eV
+Ge: FERE Correction: 0.1732 eV
+Hf: FERE Correction: 0.1649 eV
+Hg: FERE Correction: 0.0609 eV
+In: FERE Correction: -0.0811 eV
+Ir: FERE Correction: -0.5432 eV
+K: FERE Correction: -0.0369 eV
+La: FERE Correction: -0.5333 eV
+Li: FERE Correction: 0.0396 eV
+Mg: FERE Correction: 0.0976 eV
+Mn: FERE Correction: -2.7238 eV
+N: FERE Correction: -0.2455 eV
+Na: FERE Correction: -0.1032 eV
+Nb: FERE Correction: -0.1482 eV
+Ni: FERE Correction: -0.2943 eV
+O: FERE Correction: 0.0499 eV
+P: FERE Correction: 0.2078 eV
+Pd: FERE Correction: -0.2986 eV
+Pt: FERE Correction: -0.5879 eV
+Rb: FERE Correction: 0.0045 eV
+Rh: FERE Correction: -0.8152 eV
+S: FERE Correction: 0.1494 eV
+Sb: FERE Correction: -0.0499 eV
+Sc: FERE Correction: 0.2005 eV
+Se: FERE Correction: 0.0708 eV
+Si: FERE Correction: -0.1677 eV
+Sn: FERE Correction: -0.0684 eV
+Sr: FERE Correction: 0.1080 eV
+Ta: FERE Correction: 0.0037 eV
+Te: FERE Correction: -0.0110 eV
+Ti: FERE Correction: -0.1549 eV
+V: FERE Correction: -0.9614 eV
+Y: FERE Correction: -0.0241 eV
+Zn: FERE Correction: -0.1635 eV
+Zr: FERE Correction: -0.0675 eV
+
+FERE Corrected Formation Enthalpy MAE (eV): 0.0669
+FERE Uncorrected Formation Enthalpy MAE (eV): 0.1783
+
+Compound results have been saved to 'output_formation_enthalpy.csv'.
+Element correction values have been saved to 'output_FERE_correction.csv'.
