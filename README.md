@@ -37,8 +37,11 @@ SCAN+U calculations with the effecive U parameters (U= 0, 1, 2, 2.5 eV)
 Reference: Data-driven approach to parameterize SCAN +𝑈 for an accurate description of 3⁢𝑑 transition metal oxide thermochemistry, Nongnuch Artrith, José Antonio Garrido Torres, Alexander Urban, and Mark S. Hybertsen, Phys. Rev. Materials 6, 035003 (2022).
 doi: https://doi.org/10.1103/PhysRevMaterials.6.035003
 - input-03-scan-u_Artrith.csv
+- u_parameter_set-Artrith.yaml
 
 ## PBE+U, U parameter of Artrith et al.,
 Reference: High-throughput determination of Hubbard 𝑈 and Hund 𝐽 values for transition metal oxides via the linear response formalism, Guy C. Moore, Matthew K. Horton, Edward Linscott, Alexander M. Ganose, Martin Siron, David D. O'Regan, and Kristin A. Persson, Phys. Rev. Materials 8, 014409 (2024).
 doi: https://doi.org/10.1103/PhysRevMaterials.8.014409
 - input-04-pbe-u_Moore.csv
+- u_parameter_set-Moore.yaml
+
