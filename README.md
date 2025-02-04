@@ -15,7 +15,9 @@ Contains information of 251 compounds and 50 elements including input files of V
 - database-03-scan+u_Artrith.json
 - database-04-pbe+u_Moore.json
 
-# Input csv files
+# Usage
+python FERE-calculator.py -i inputfile.csv
+python -h FERE-calculator.py
 
 ## r2SCAN+U
 r2SCAN+U calculations with the effecive U parameters (U= 0, 1, 2, 2.5 eV)
