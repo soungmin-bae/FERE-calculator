@@ -16,12 +16,14 @@ Run the script from the command line with the following options:
     -i, --input   : (Optional) Input CSV file containing FERE data.
                     Default is "output_FERE_correction.csv".
     -o, --output  : (Optional) Output PDF file for the generated plot.
-                    Default is "periodic-FERE.pdf".
+                    Default is "periodic-<xc_functional>-FERE.pdf" (derived from the XC functional provided by -n).
+    -n, --name    : (Optional) XC functional name to be displayed in the plot title.
+                    Default is "XC functional".
     -s, --show    : (Optional) If specified, displays the plot window.
                     By default, the plot window is not shown.
 
 Example:
-    python plotter-periodic-FERE.py -i mydata.csv -o myplot.pdf -s
+    python plotter-periodic-FERE.py -i mydata.csv -n "PBE" -o myplot.pdf -s
 
 Input CSV File Format:
 ----------------------
@@ -35,7 +37,7 @@ to its respective position in the plot.
 
 Output:
 -------
-The script generates a PDF file (default: periodic-FERE.pdf) containing
+The script generates a PDF file (default: periodic-<xc_functional>-FERE.pdf) containing
 the periodic table plot with colored boxes and a colorbar.
 Additionally, the script prints the input file used, the output file name,
 and a confirmation message once the PDF is saved.
@@ -59,9 +61,14 @@ import matplotlib.colors as mcolors
 from matplotlib.colorbar import ColorbarBase
 import matplotlib as mpl
 
+def sanitize_filename(name):
+    """Simple function to replace spaces with underscores for filenames."""
+    return name.replace(" ", "_")
+
 def main(args):
     # Print starting messages with the input and output file names
     print(f"Using input file: {args.input}")
+    print(f"XC functional: {args.name}")
     print(f"Output will be saved as: {args.output}")
 
     # Set the default font for the entire plot
@@ -69,7 +76,7 @@ def main(args):
 
     # Adjustable parameters for font sizes, font weights, and figure size
     element_fontsize = 6       # Font size for the element symbol
-    fere_fontsize = 6          # Font size for the FERE value
+    fere_fontsize = 5          # Font size for the FERE value
 
     element_fontweight = 'bold'    # Font weight for the element symbol
     fere_fontweight = 'normal'     # Font weight for the FERE value
@@ -78,9 +85,8 @@ def main(args):
     fig_width_cm = 14          # Figure width in centimeters
     fig_height_cm = 7.0        # Figure height in centimeters
 
-    # Adjustable parameter for the XC functional type.
-    # This variable will be displayed in the plot title.
-    xc_functional = "SCAN+U (U= 1eV)"
+    # The XC functional type (provided via -n/--name)
+    xc_functional = args.name
 
     # Adjustable colormap parameters:
     # Available colormaps include (but are not limited to):
@@ -91,8 +97,8 @@ def main(args):
     cmap = getattr(plt.cm, colormap_name)   # Obtain the colormap object from plt.cm
 
     # Adjustable range for colormap normalization
-    colormap_range_min = -1.0
-    colormap_range_max = 1.0
+    colormap_range_min = -0.8
+    colormap_range_max = 0.8
 
     # Load the specified input CSV file
     data = pd.read_csv(args.input)
@@ -181,8 +187,10 @@ if __name__ == "__main__":
     )
     parser.add_argument("-i", "--input", type=str, default="output_FERE_correction.csv",
                         help="Input CSV file containing FERE data (default: output_FERE_correction.csv)")
-    parser.add_argument("-o", "--output", type=str, default="periodic-FERE.pdf",
-                        help="Output PDF file for the generated plot (default: periodic-FERE.pdf)")
+    parser.add_argument("-o", "--output", type=str, default="",
+                        help="Output PDF file for the generated plot. If not specified, defaults to periodic-<xc_functional>-FERE.pdf")
+    parser.add_argument("-n", "--name", type=str, default="XC functional",
+                        help="XC functional name to be displayed in the plot title (default: 'XC functional')")
     parser.add_argument("-s", "--show", action="store_true", default=False,
                         help="Flag to display the plot window (default: do not show)")
     args = parser.parse_args()
@@ -192,5 +200,10 @@ if __name__ == "__main__":
         print(f"Error: The input file '{args.input}' does not exist in the current folder.")
         parser.print_help()
         sys.exit(1)
+
+    # If output file is not provided, set it using the XC functional name
+    if not args.output:
+        safe_name = sanitize_filename(args.name)
+        args.output = f"periodic-{safe_name}-FERE.pdf"
 
     main(args)
